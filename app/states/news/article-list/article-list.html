@@ -7,7 +7,7 @@
     <div class="row" ng-repeat="article in ctrl.articles">
         <div class="col-md-12">
             <h4>{{ article.title }}</h4>
-            <p>{{ article.title | articlecut }}</p>
+            <p>{{ article.text | articlecut }}</p>
             <a ui-sref="news.article({id:article.id})">Read all</a>
         </div>
     </div>

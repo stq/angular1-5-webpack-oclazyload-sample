@@ -12,6 +12,7 @@ module.exports = angular
             template: require('./top.html'),
             controller: require('./top.controller.js'),
             controllerAs: 'topCtrl',
-            bindToController: true
+            bindToController: true,
+            transclude: true,
         };
     }]);

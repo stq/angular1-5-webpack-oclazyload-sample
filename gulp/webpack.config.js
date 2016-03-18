@@ -17,7 +17,7 @@ var config = {
 
         root: rootDir,
 
-        modulesDirectories: ['app', 'assets', 'node_modules'],
+        modulesDirectories: ['app', 'node_modules'],
 
         alias: {
             'ui.router': 'angular-ui-router/release/angular-ui-router',
