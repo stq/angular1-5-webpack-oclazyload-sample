@@ -1,0 +1,51 @@
+<div class="appheader navbar navbar-default navbar-static-top appheader-content">
+    <div class="clearfix">
+
+        <div dropdown on-toggle="toggled(open)" class="application-dropdown pull-left nav-tool nav-greeting dropdown-toggle auto-width">
+            <a dropdown-toggle class="brand" href="">
+                <div class="logo"></div>
+            </a>
+            <a ui-sref="home"><h1>Sample app</h1></a>
+            <ul class="dropdown-menu leftDocked">
+                <li><b class="item-title heavy-font">Whatever</b></li>
+                <li><hr class="hr-margin"></li>
+                <li><a href="">sample.com</a></li>
+                <li><a href="">Sample app</a></li>
+                <li><hr class="hr-margin"></li>
+                <li><b class="item-title heavy-font">Support</b></li>
+                <li><span class="item-title">+375 29 123 0000</span></li>
+            </ul>
+        </div>
+
+        <div class="nav-tools pull-right">
+            <div dropdown on-toggle="toggled(open)" class="nav-tool nav-greeting dropdown-toggle auto-width">
+                <div dropdown-toggle class="nav-tool-item nav-greeting auto-width">
+                    <span>Hi {{ topCtrl.getUserFullName() }}</span>
+                </div>
+                <ul class="dropdown-menu singleBasis">
+                    <li><a href="">Logout</a></li>
+                </ul>
+            </div>
+            <div dropdown on-toggle="toggled(open)" class="nav-tool icon-gear">
+                <div dropdown-toggle class="nav-tool-item icon-user"></div>
+                <ul class="dropdown-menu centerDocked">
+                </ul>
+            </div>
+            <div dropdown on-toggle="toggled(open)" class="nav-tool icon-user">
+                <div dropdown-toggle class="nav-tool-item icon-gear"></div>
+                <ul class="dropdown-menu rightDocked">
+                </ul>
+            </div>
+            <div dropdown on-toggle="toggled(open)" class="nav-tool dropdown">
+                <div dropdown-toggle class="nav-tool-item icon-question"></div>
+                <ul class="dropdown-menu leftDocked">
+                    <li><a href="/" target-blank>Go to help</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="quicksearch-wrapper pull-right col-xs-6 col-sm-6 col-md-6 col-lg-7">
+            <quicksearch></quicksearch>
+        </div>
+    </div>
+    <navbar></navbar>
+</div>

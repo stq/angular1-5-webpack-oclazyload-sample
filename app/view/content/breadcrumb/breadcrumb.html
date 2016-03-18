@@ -1,0 +1,7 @@
+<ol class="breadcrumb">
+    <li>
+        <a ui-sref="home">Home</a>
+    </li>
+
+    <li ng-repeat="level in ctrl.getPath() track by $index" ng-bind="level"/>
+</ol>

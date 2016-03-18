@@ -1,0 +1,12 @@
+*.project
+*.iml
+*.ipr
+*.iws
+*.idea
+/**/*.js.html
+*.sln
+*.DotSettings.user
+coverage
+node_modules
+build
+dist

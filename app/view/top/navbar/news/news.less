@@ -1,0 +1,17 @@
+.navbar-news {
+  h2 {
+    color: #333;
+  }
+  a {
+    display: block;
+    &.disabled {
+      color: gray;
+      pointer-events: none;
+      cursor: default;
+    }
+    &.active {
+      text-decoration: underline;
+    }
+  }
+
+}

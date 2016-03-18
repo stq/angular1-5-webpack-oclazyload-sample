@@ -1,0 +1,85 @@
+.quick-search {
+  padding-left: 0px;
+
+  .quick-search-content {
+    position: relative;
+
+    .input-wrapper {
+      .input-group-addon {
+        //necessary for correct height calculation in the IE
+        span {
+          padding-left: 2px;
+          display: table-cell;
+        }
+      }
+
+      .form-control {
+        line-height: 14px;
+      }
+
+      .clear-input-btn {
+        color: #000000;
+        cursor: pointer;
+
+        &:before {
+          position: absolute;
+          top: 12px;
+          right: 15px;
+          z-index: 5;
+        }
+      }
+    }
+
+    .look-head-list {
+      position: absolute;
+      z-index: 5;
+      padding-left: 60px;
+      margin: 0;
+      color: black;
+      width: 100%;
+      list-style: none;
+
+      .look-head-list-item {
+        background-color: #ffffff;
+        padding: 8px 16px;
+
+        &.active {
+          background-color: #A7D6F3;
+        }
+      }
+    }
+  }
+
+  .search-label {
+    font-weight: 400;
+  }
+
+  .text-muted {
+    font-style: italic;
+  }
+
+  .search-settings {
+    position: absolute;
+    z-index: 2;
+    color: black;
+    width: 100%;
+
+    #quick-search-panel-popup {
+      padding: 10px 15px 15px 15px;
+
+      .text-blue {
+        color: #0066b3;
+      }
+
+      #clear-all-search-options, #quick-search-start {
+        margin: 0px;
+      }
+    }
+  }
+
+  .checkbox-container {
+    padding-left: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,44 @@
+<footer class="">
+    <div class="popup" ng-class="{'showPopup': bottomCtrl.isExpanded, 'hidePopup': !bottomCtrl.isExpanded}">
+        <div class="panel-popup" ng-click="bottomCtrl.togglePopup()"><p>
+            <span class="glyphicon glyphicon-menu-up" ng-class="bottomCtrl.isExpanded ? 'glyphicon-menu-down' : 'glyphicon-menu-up'"></span></p>
+        </div>
+        <div style="overflow: hidden; height: 100%;">
+            <div class='col-lg-1'>
+                <a class="brand pull-left" href="">
+                    <div class="logo pull-left"></div>
+                </a>
+                <div class="pull-left">
+                    <h1>Sample app</h1>
+                </div>
+            </div>
+            <div class='col-lg-4'>
+            </div>
+            <div class='col-lg-2'>
+                <ul>
+
+                </ul>
+            </div>
+            <div class='col-lg-2'>
+                <ul>
+
+                </ul>
+            </div>
+            <div class='col-lg-2'>
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-static-info">
+        <small>Footer info</small>
+        <ul>
+            <li>About Us</li>
+            <li>|</li>
+            <li>Terms of Use</li>
+            <li>|</li>
+            <li>Privacy Policy</li>
+        </ul>
+    </div>
+</footer>

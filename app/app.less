@@ -1,0 +1,40 @@
+html, body {
+  height: 100%;
+  background-image: url(../assets/background.svg);
+  background-size: contain;
+}
+
+.main-page {
+  min-width: 1024px;
+  overflow: hidden;
+
+  //Prevent cross button for text input in the IE
+  input[type=text]::-ms-clear {
+    display: none;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+
+  .href-link {
+    padding: 10px 5px;
+    cursor: pointer;
+  }
+
+  .main-wrapper {
+    height: 100%;
+    overflow: hidden;
+    min-height: 768px;
+  }
+
+  .ui-grid-header-cell-wrapper {
+    height:0;
+  }
+
+  .text-elipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

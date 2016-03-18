@@ -1,0 +1,14 @@
+<div class="results">
+    <div class="row" calc-height>
+        <div class="col-md-12 grid-container">
+            <div calc-height>
+                <div ng-if="ctrl.articles.length == 0">
+                    Nothing found
+                </div>
+                <div ng-repeat="article in ctrl.articles">
+                    <a ui-sref="search.results.details({id: article.id})">{{ article.title }}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

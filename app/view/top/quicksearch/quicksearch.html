@@ -1,0 +1,50 @@
+<div class="panel-body quick-search">
+    <div class="quick-search-content" ng-click="$ctrl.preventClose = true">
+        <div class="input-wrapper">
+            <div class="input-group">
+                <span class="input-group-addon" ng-click="$ctrl.expanded = !$ctrl.expanded">
+                    <span class="glyphicon glyphicon-search"></span>
+                    <span class="glyphicon" ng-class="$ctrl.expanded ? 'glyphicon-menu-up' : 'glyphicon-menu-down'"></span>
+                </span>
+                <input id="quick-search-text"
+                       ng-model="$ctrl.form.query"
+                       ng-keyup="$ctrl.onKeyUp($event)"
+                       ng-keydown="$ctrl.onKeyDown($event)"
+                       type="text"
+                       class="form-control"
+                       placeholder="Search articles.."
+                       onfocus="placeholder = ''"
+                       onblur="placeholder = 'Search articles'">
+                <span id="clear-quick-search-text" class="clear-input-btn fa fa-times" ng-click="$ctrl.queryClear()"></span>
+            </div>
+        </div>
+        <div class="search-settings">
+            <div id="quick-search-panel-popup" class="well" ng-if="$ctrl.expanded">
+
+                <div class="radio-inline" ng-repeat="(operatorName,operator) in $ctrl.form.operators">
+                    <input id="search-condition-radio-{{::operatorName}}" type="radio" ng-model="$ctrl.form.operator" ng-change="$ctrl.setIsDisabled();" value="{{::operatorName}}"/>
+                    <label id="search-condition-{{::operatorName}}" for="search-condition-radio-{{::operatorName}}" class="search-label" >{{::operator.text}}</label>
+                </div>
+
+                <div ng-switch="$ctrl.form.operator">
+                    <div>
+
+
+                        <div class="well-sm">
+                            <p id="search-tip-startswith" ng-class="{ 'text-muted' : $ctrl.form.operator != 'and' }">
+                                <b>AND:</b> All search words must be in article
+                            </p>
+                            <p id="search-tip-contains" ng-class="{ 'text-muted' : $ctrl.form.operator != 'or' }">
+                                <b>OR:</b> One search term must be in article
+                            </p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <button id="quick-search-start" class="btn btn-default" ng-click="$ctrl.search()">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

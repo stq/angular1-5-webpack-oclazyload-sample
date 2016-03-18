@@ -1,0 +1,23 @@
+<div class="context-wrapper" calc-height>
+    <div class="content-wrapper menu-off" calc-height>
+
+        <!-- Main Content Area -->
+        <div class="home-content ie9-height home-left-margin-hide">
+            <div id="mainContainer" class="container-fluid" ui-view="container"></div>
+        </div>
+    </div>
+
+    <!-- Right Gutter: tabs collapse here -->
+    <div class="right-gutter" ng-click="ctrl.setClosePrevention();">
+        <div class="help-drawer" ng-class="{ on: ctrl.on }">
+            <div class="help-widget" >
+                <div class="help-switch" ng-click="ctrl.toggleHelp()">Help</div>
+                <div class="help-panel well well-lg shim-bottom" ng-bind-html="ctrl.HelpContent" >
+                </div>
+            </div>
+        </div>
+        <div class="context-help-switch" ng-if="ctrl.isCollapsed('lmc')" ng-click="ctrl.expand('lmc')"><div>i</div></div>
+        <div class="action-panel-tab history-gutter" ng-if="ctrl.isCollapsed('actionsPanel')" ng-click="ctrl.expand('actionsPanel')">History</div>
+        <div class="action-panel-tab select-gutter"  ng-if="ctrl.isCollapsed('actionsPanel')" ng-click="ctrl.expand('actionsPanel')">Select</div>
+    </div>
+</div>

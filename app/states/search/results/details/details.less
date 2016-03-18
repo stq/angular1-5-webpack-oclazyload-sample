@@ -1,0 +1,127 @@
+.app-content {
+    .highlighted {
+        .ui-grid-cell {
+            background-color: #feffa1;
+            border-bottom: 1px solid white;
+        }
+    }
+
+    .distributor-ref {
+        text-align: center;
+    }
+
+    .action-bar-content {
+        overflow-y: auto;
+    }
+
+    .list-group {
+        .list-group-item {
+            padding: 0;
+
+            a {
+                outline: none;
+            }
+
+            &.disabled {
+                background-color: #eee;
+                cursor: not-allowed;
+
+                > div {
+                    a {
+                        color: #777;
+                        pointer-events: none;
+                        cursor: not-allowed;
+                        text-decoration: none;
+                    }
+                }
+            }
+
+            &.has-subitems.active {
+                color: black;
+
+                div {
+                    background-color: #C8E7F5;
+                }
+            }
+
+            &.active:not(.has-subitems) {
+                a, span {
+                    color: white;
+                }
+            }
+
+            div {
+                padding: .5em 1em;
+            }
+
+            &.active {
+                background-color: white;
+
+                div {
+                    background-color: #0066b3;
+                }
+
+                > a {
+                    font-weight: bold;
+                }
+
+                .subitems-list {
+                    margin: 0;
+                    padding: 0;
+
+                    li {
+                        padding: 0.5em 1em 0.5em 3em;
+
+                        &.active {
+                            background-color: #0066b3;
+
+                            a {
+                                color: white;
+                                font-weight: bold;
+                            }
+                        }
+
+                        &.disabled {
+                            background-color: #eee;
+                            cursor: not-allowed;
+
+                            a {
+                                color: #777;
+                                pointer-events: none;
+                                cursor: not-allowed;
+                                text-decoration: none;
+                            }
+                        }
+
+                        a, span {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .fa {
+            margin-right: 5px;
+        }
+    }
+}
+
+
+.custom-icon {
+    padding-left: 15px;
+
+    &:before {
+        content: '';
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        margin: 0 3px;
+        left: 0;
+        top: 4px;
+        display: block;
+    }
+
+}

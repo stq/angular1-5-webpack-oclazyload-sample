@@ -1,0 +1,29 @@
+<div ng-click="$ctrl.preventClose()">
+
+    <div class="row navbar-menu">
+        <ul class="nav navbar-nav">
+            <li ng-class="{ active: $ctrl.newsActive()}">
+                <a href="" ng-click="$ctrl.openNews()">NEWS</a>
+            </li>
+            <li ng-class="{ active: $ctrl.activeCategory == 'alerts'}">
+                <a href="" ng-click="$ctrl.showNotImplementedNotification()">TODO</a>
+            </li>
+            <li ng-class="{ active: $ctrl.activeCategory == 'notes'}">
+                <a href="" ng-click="$ctrl.showNotImplementedNotification()">TODO</a>
+            </li>
+            <li class="pull-right">
+                <a href="" ng-click="$ctrl.showNotImplementedNotification()">TODO</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row navbar-submenu" ng-hide>
+        <div class="tab-content">
+
+            <div class="tab-pane" ng-class="{ active: $ctrl.openItem == 'news' }" id="home">
+                <navbar-news></navbar-news>
+            </div>
+
+        </div>
+    </div>
+</div>

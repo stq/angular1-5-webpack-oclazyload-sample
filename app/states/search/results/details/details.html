@@ -1,0 +1,14 @@
+<modal-header>
+    <div>{{ctrl.article.title}}</div>
+</modal-header>
+<div class="modal-body container-fluid">
+    <div class="row app-content">
+        <div class="col-md-12">
+            {{ ctrl.article.text }}
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button id="ok" class="btn btn-default ok" ng-click="ctrl.close()">Okay, thanks</button>
+</div>
+

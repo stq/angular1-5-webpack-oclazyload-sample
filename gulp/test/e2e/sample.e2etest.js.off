@@ -1,0 +1,201 @@
+var baseUrl = 'http://localhost:8123/';
+
+
+describe('Search form:', function() {
+    var advButton = getElementByClick('appSearch.isCollapsed = !appSearch.isCollapsed'),
+        clearButton = getElementByClick('appSearch.qClear()'),
+        searchInput = element(by.model('appSearch.q'));
+
+    beforeEach(function(){
+        browser.get(baseUrl);
+    });
+
+    it('Check search container existence', function(){
+        var locator = by.id('searchContainer');
+        element.all(locator).count().then(function(count){
+            expect(count).toEqual(1);
+        });
+    });
+
+    it('Clear button', function(){
+        searchInput.sendKeys('search text');
+        clearButton.click();
+
+        expect(searchInput.getAttribute('value')).toBe('');
+    });
+
+    it('Advanced panel initial invisible', function(){
+
+        countElements(by.css('[ng-if="appSearch.isCollapsed"]'), 0);
+    });
+
+    it('Advanced panel apperance', function(){
+        advButton.click();
+
+        countElements(by.css('[ng-if="appSearch.isCollapsed"]'), 1);
+    });
+
+    it('Advanced panel initial state', function(){
+        advButton.click();
+
+        checkAdvancedInitialState();
+    });
+
+    it('Advanced panel search condition changing', function(){
+        advButton.click();
+
+        countElements(by.css('[ng-switch-when="contains"]'), 0);
+        chengeSearchCondition(0, function(elem){
+            expect(elem.getAttribute('checked')).toBeTruthy();
+            countElements(by.css('[ng-switch-when="contains"]'), 1);
+        });
+        chengeSearchCondition(1, function(elem){
+            expect(elem.getAttribute('checked')).toBeTruthy();
+
+            countElements(by.css('[ng-switch-when="keyword"]'), 1);
+
+            element.all(by.model('appSearch.keywordOption')).then(function(elements){
+                var length = elements.length - 1;
+                var checkedCount = 0;
+
+                elements.forEach(function(elem){
+                    length--;
+                    elem.getAttribute('checked').then(function(attr){
+                        if (attr){
+
+                            checkedCount++;
+                        }
+                        if (!length){
+                            expect(checkedCount).toBe(1);
+                        }
+                    });
+
+                });
+            });
+
+            var ignoreCheckbox = element(by.model('appSearch.isIgnoreSpecialChars'));
+            expect(ignoreCheckbox.getAttribute('disabled')).toBeTruthy();
+        });
+    });
+
+    it('Reset button', function(){
+        advButton.click();
+
+        searchInput.sendKeys('search text');
+        chengeSearchCondition(0);
+
+        getElementByClick('appSearch.reset()').click();
+
+        expect(searchInput.getAttribute('value')).toBe('');
+        checkAdvancedInitialState();
+
+
+        searchInput.sendKeys('search text');
+        chengeSearchCondition(1);
+
+        getElementByClick('appSearch.reset()').click();
+
+        expect(searchInput.getAttribute('value')).toBe('');
+        checkAdvancedInitialState();
+
+    });
+
+    it('Simple search', function(){
+        searchInput.sendKeys('search string');
+        searchInput.sendKeys(protractor.Key.ENTER);
+
+        expect(browser.getCurrentUrl()).toBe(baseUrl +
+            '#/search/parts?q=search%20string&mod=ignorechars:true&ignoreSpecialChars=true');
+    });
+
+    it('Advanced part# search', function(){
+        advButton.click();
+        searchInput.sendKeys('search string');
+        chengeSearchCondition(0);
+
+        getElementByClick('appSearch.search()').click();
+
+        expect(browser.getCurrentUrl()).toBe(baseUrl +
+            '#/search/parts?q=search%20string&contains=true&mod=ignorechars:true%7Coperator:contains&ignoreSpecialChars=true');
+    });
+
+    it('Advanced keyword condition', function(){
+        advButton.click();
+        chengeSearchCondition(1);
+
+        expect(element.all(by.model('appSearch.keywordOption')).get(0).getAttribute('value')).toBe('All');
+        expect(element.all(by.model('appSearch.keywordOption')).get(1).getAttribute('value')).toBe('Any');
+        expect(element.all(by.model('appSearch.keywordOption')).get(2).getAttribute('value')).toBe('Exact');
+    });
+
+    it('Advanced keyword-all search', function(){
+        advButton.click();
+        searchInput.sendKeys('search string');
+        chengeSearchCondition(1);
+
+        getElementByClick('appSearch.search()').click();
+
+        expect(browser.getCurrentUrl()).toBe(baseUrl +
+            '#/search/parts?q=search%20string&mod=ignorechars:true%7Csearchtype:All&keywordOption=All');
+    });
+
+    it('Advanced keyword-any search', function(){
+        advButton.click();
+        searchInput.sendKeys('search string');
+        chengeSearchCondition(1);
+
+        element.all(by.model('appSearch.keywordOption')).get(1).click();
+
+        getElementByClick('appSearch.search()').click();
+
+        expect(browser.getCurrentUrl()).toBe(baseUrl +
+            '#/search/parts?q=search%20string&mod=ignorechars:true%7Csearchtype:Any&keywordOption=Any');
+    });
+
+    it('Advanced keyword-exact search', function(){
+        advButton.click();
+        searchInput.sendKeys('search string');
+        chengeSearchCondition(1);
+
+        element.all(by.model('appSearch.keywordOption')).get(2).click();
+
+        getElementByClick('appSearch.search()').click();
+
+        expect(browser.getCurrentUrl()).toBe(baseUrl +
+            '#/search/parts?q=search%20string&mod=ignorechars:true%7Csearchtype:Exact&keywordOption=Exact');
+    });
+});
+
+function getElementByClick(str){
+    return element(by.css('[ng-click="$"]'.replace('$', str)));
+}
+
+function countElements(locator, expects, callback){
+    element.all(locator).count().then(function(count){
+
+        typeof expects === 'number' && expect(count).toEqual(expects);
+        typeof expects === 'function' && expects(count);
+        typeof callback === 'function' && callback(count);
+    });
+}
+
+function checkAdvancedInitialState(){
+    var ignoreCheckbox = element(by.model('appSearch.isIgnoreSpecialChars'));
+
+    expect(ignoreCheckbox.getAttribute('checked')).toBeTruthy();
+
+    element.all(by.model('appSearch.searchCondition')).then(function(elements){
+        expect(elements.length).toBe(2);
+        elements.forEach(function(elem){
+            expect(elem.getAttribute('checked')).toBeFalsy();
+        });
+    });
+
+    countElements(by.model('appSearch.keywordOption'), 0);
+}
+
+function chengeSearchCondition(index, callback) {
+    var elem = element.all(by.model('appSearch.searchCondition')).get(index).click();
+
+    typeof callback === 'function' && callback(elem);
+}
