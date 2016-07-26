@@ -13,6 +13,6 @@ module.exports = angular
             controller: require('./top.controller.js'),
             controllerAs: 'topCtrl',
             bindToController: true,
-            transclude: true,
+            transclude: true
         };
     }]);

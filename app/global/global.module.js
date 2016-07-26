@@ -2,7 +2,8 @@
 
 require('./global.less');
 
-var globalModule = angular
+
+module.exports = angular
     .module('app.global', [
         require('./notification/notification.module.js').name,
         require('./session/session.module.js').name,
@@ -11,5 +12,3 @@ var globalModule = angular
     ])
     .factory('State', require('./state.factory.js'))
     .service('api', require('./api.service.js'));
-
-module.exports = globalModule;
