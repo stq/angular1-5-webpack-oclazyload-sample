@@ -6,5 +6,6 @@ module.exports = angular
         require('./modal/modal.module.js').name
     ])
     .component('view', {
-        template: require('./view.html')
+        template: require('./view.html'),
+        controller: require('./view.controller.js')
     });

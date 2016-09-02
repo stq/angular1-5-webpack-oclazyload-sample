@@ -6,8 +6,6 @@ module.exports = angular
     .module('app.global.timeout-notification', [
     ]);
 
-    /*Commented for a while. By the request of backend developers. Please, do not delete*/
-
     //.config(['$httpProvider', '$provide', function ($httpProvider, $provide) {
     //    $provide.factory('httpRequestInterceptor', [ '$q', '$injector', function ($q, $injector) {
     //        var processingError = false;

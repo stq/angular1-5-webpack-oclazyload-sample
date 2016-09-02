@@ -6,8 +6,7 @@ var debugEnabled = [
     ].indexOf(location.hostname) > -1;
 
 var configProp = {
-    LOG_FLAG: debugEnabled,
-    COMPILE_FLAG: debugEnabled,
+    DEBUG: debugEnabled,
     API_CONTEXT: '/api',
     XHR_TIMEOUT: 60000
 };

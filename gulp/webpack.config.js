@@ -26,9 +26,12 @@ var config = {
     },
 
     entry: {
-        vendor: [
-            'angular',
+        utils: [
             'underscore',
+            'split.js'
+        ],
+        angular: [
+            'angular',
             'ui.router',
             'angular-bootstrap',
             'oclazyload'
@@ -99,7 +102,7 @@ var config = {
             { from: pathmap.static.assets },
             { from: pathmap.static.index }
         ]),
-        new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js', Infinity)
+        new webpack.optimize.CommonsChunkPlugin('utils', 'utils.js', Infinity)
     ]
 };
 
