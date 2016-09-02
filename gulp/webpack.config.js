@@ -17,7 +17,7 @@ var config = {
 
         root: rootDir,
 
-        modulesDirectories: ['app', 'node_modules'],
+        modulesDirectories: ['app', 'assets', 'node_modules'],
 
         alias: {
             'ui.router': 'angular-ui-router/release/angular-ui-router',
@@ -30,7 +30,7 @@ var config = {
             'angular',
             'underscore',
             'ui.router',
-            'angular-bootstrap-npm/dist/angular-bootstrap',
+            'angular-bootstrap',
             'oclazyload'
         ],
         app: [
@@ -47,7 +47,7 @@ var config = {
         loaders: [{
                 test: /\.js$/,
                 loader: 'babel',
-                exclude: [/node_modules/, /datagrid/]
+                exclude: [/node_modules/, /bower_components/, /datagrid/]
             },{
                 test: /\.css$/,
                 loader: ExtractTextPlugin.extract('style-loader', 'css-loader' + (production && '?minimize' || '')),
@@ -79,7 +79,7 @@ var config = {
     'html-minify-loader': {
         empty: true,
         cdata: true,
-        comments: true,
+        comments: false,
         ssi: true,
         conditionals: true,
         spare: true,
