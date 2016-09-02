@@ -1,5 +1,3 @@
-'use strict';
-
 var debugEnabled = [
         'localhost',
         'app.local'

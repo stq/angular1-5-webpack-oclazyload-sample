@@ -1,7 +1,4 @@
-"use strict";
-
 require('./global.less');
-
 
 module.exports = angular
     .module('app.global', [
