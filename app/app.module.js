@@ -1,5 +1,6 @@
 require('./app.less');
-var scriptjs = require("scriptjs");
+var scriptjs = require("scriptjs"),
+    config = require("app.config");
 
 var app = angular
     .module('app', [
@@ -35,11 +36,17 @@ var app = angular
         });
     }]);
 
-scriptjs([ "remote-scripts/example-script.js" ], 'remote-components');
-scriptjs.ready('remote-components', function() {
+if( config.externalScripts && config.externalScripts.length ) {
+    scriptjs(config.externalScripts, 'remote-components');
+    scriptjs.ready('remote-components', startAngular);
+} else {
+    startAngular();
+}
+
+function startAngular() {
     angular.element().ready(function () {
         angular.bootstrap(document, [app.name]);
     });
-});
+}
 
 module.exports = app;
