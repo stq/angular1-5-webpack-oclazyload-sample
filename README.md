@@ -17,7 +17,7 @@ To prepare environment before you can do anything:
 2. Install node-gyp `npm install -g node-gyp` , which is required to build native binary code in certain modules
 3. Install Gulp globally by running `npm install -g gulp`
 4. Install required node modules for the project by `npm install` at project folder
-5. Run app at localhost:8123 by command `gulp dev` or build app by command `gulp`
+5. Run app at localhost:8100 by command `gulp dev` or build app by command `gulp`
 
 **Notes**
 

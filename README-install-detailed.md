@@ -167,14 +167,14 @@ Write in the command prompt:
 
 #### 9.3 Verify local server is running
 
-Open in browser [http://localhost:8123/](http://localhost:8123/), make sure application is running
+Open in browser [http://localhost:8100/](http://localhost:8100/), make sure application is running
 
 ### 10 Create localhost alias
 
 > Localhost alias allows to open site, running at local machine, as site with domain.
 Domains are important for site cookies work properly on them.
 Cookies are used at site to keep user login information and some other settings.
-Without localhost alias site can be accessed only at http://localhost:8123, and cookies will not work.
+Without localhost alias site can be accessed only at http://localhost:8100, and cookies will not work.
 
 #### 10.1 Open HOSTS file in notepad
 
@@ -199,5 +199,5 @@ Type in the notepad new line with content **and save the file**
 
 #### 10.3 Verify localhost alias
 
-Open in browser [http://app.local:8123/](http://app.local:8123/), make sure application is running
+Open in browser [http://app.local:8100/](http://app.local:8100/), make sure application is running
 
